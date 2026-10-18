@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+// use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
 use Illuminate\View\View; 
 
@@ -18,6 +19,7 @@ class BerandaController extends Controller
             'versiMysql'   => $versiMysql, 
             'namaDatabase' => DB::getDatabaseName(), 
             'waktu'        => now()->translatedFormat('l, d F Y H:i'),
+            'pesan'        => '<script>alert("Halo hanya coba");</script>',
         ]); 
-    } 
+    }
 }
