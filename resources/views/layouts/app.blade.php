@@ -20,6 +20,7 @@
             @include('layouts.partials.sidebar')
 
             <main class="col-lg-9 col-xl-10 px-3 px-md-4 py-4">
+                @include('layouts.partials.flash')
                 @yield('content')
 
                 <footer class="text-center text-body-secondary small mt-5">
@@ -33,5 +34,32 @@
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}">
     </script>
     @stack('scripts')
+
+    {{-- KODE BARU UNTUK TEMA TERANG/GELAP --}}
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleBtn = document.getElementById('btnThemeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlElement = document.documentElement;
+
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function () {
+                const currentTheme = htmlElement.getAttribute('data-bs-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                htmlElement.setAttribute('data-bs-theme', newTheme);
+                
+                if (themeIcon) {
+                    // Berganti antara ikon Matahari (mode gelap) dan Bulan (mode terang)
+                    if (newTheme === 'dark') {
+                        themeIcon.className = 'bi bi-sun-fill';
+                    } else {
+                        themeIcon.className = 'bi bi-moon-fill';
+                    }
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>

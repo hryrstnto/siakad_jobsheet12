@@ -13,8 +13,13 @@
                     :ikon="$item['ikon']" :warna="$item['warna']" />
             </div>
         @endforeach
-    </div>
 
+        <div class="col-12 col-sm-6 col-xl-3">
+            <x-stat-card judul="Rata-rata SKS per KRS" jumlah="21.5"
+                ikon="bi-journal-text" warna="danger" />
+        </div>
+    </div>
+    
     <div class="row g-3">
         <div class="col-12 col-xl-8">
             <div class="card border-0 shadow-sm h-100">
