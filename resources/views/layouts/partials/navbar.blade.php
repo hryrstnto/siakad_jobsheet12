@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-success sticky-top shadow-sm">
+<nav class="navbar navbar-dark bg-primary sticky-top shadow-sm">
     <div class="container-fluid">
         <div class="d-flex align-items-center">
             <button class="navbar-toggler d-lg-none me-2" type="button"

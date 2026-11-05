@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!-- NAMA    : HARY RISTANTO
+KELAS   : TIF-5C
+NIM     : 3202416102 -->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
@@ -33,6 +36,7 @@
 
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}">
     </script>
+    <script src="{{ asset('vendor/sweetalert2/js/sweetalert2.all.min.js') }}"></script>
     @stack('scripts')
 
     {{-- KODE BARU UNTUK TEMA TERANG/GELAP --}}

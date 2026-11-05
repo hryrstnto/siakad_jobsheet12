@@ -11,6 +11,7 @@
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/bootsrap-icons/bootstrap-icons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/siakad.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body class="bg-body-tertiary">
     <main class="container min-vh-100 py-4 d-flex align-items-center justify-content-center">

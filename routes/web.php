@@ -19,7 +19,7 @@ Route::middleware('guest')->group(function () {
 });
 
 // Halaman internal: hanya bisa dibuka bila SUDAH login
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'nocache')->group(function () {
     // Halaman awal diarahkan ke dashboard
     Route::get('/', fn () => redirect()->route('dashboard'));
 
@@ -38,6 +38,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/krs', [KrsController::class, 'index'])
         ->name('krs.index');
     Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda');
+
+    // Endpoint Json datatables: harus diatas route yang memuat (dosen)
+    Route::get('/dosen/data', [DosenController::class, 'data']) -> name('dosen.data');
+
+    // Tambah, ubah, hapus khusus admin
+    Route::middleware('role:admin')->group(function () {
+        Route::resource('dosen', DosenController::class)
+            ->except(['index', 'show']);
+    });
+
+    // Daftar dan detail: semua pengguna yang sudah login
+    Route::resource('dosen', DosenController::class)
+        ->only(['index', 'show']);
+
     // Hanya admin; middleware role berjalan SETELAH auth karena berada di dalam grup auth
     Route::get('/pengguna', [PenggunaController::class, 'index'])
         ->middleware('role:admin')

@@ -27,8 +27,19 @@ NIM     : 3202416102 -->
             </div>
 
             <div class="mb-3">
-                <x-form-input label="Kata Sandi" name="password" type="password"
-                    autocomplete="current-password" required />
+                <label for="password" class="form-label">Kata Sandi</label>
+                <div class="input-group">
+                    <input type="password" class="form-control @error('password') is-invalid @enderror"
+                        id="password" name="password" autocomplete="current-password" required>
+                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                        <i class="bi bi-eye" id="toggleIcon"></i>
+                    </button>
+                </div>
+                @error('password')
+                    <div class="invalid-feedback d-block">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
 
             <div class="form-check mb-3">
@@ -41,4 +52,22 @@ NIM     : 3202416102 -->
         </form>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleBtn = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        const toggleIcon = document.getElementById('toggleIcon');
+
+        if (toggleBtn && passwordInput) {
+            toggleBtn.addEventListener('click', function () {
+                const isPassword = passwordInput.getAttribute('type') === 'password';
+                passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+                
+                toggleIcon.classList.toggle('bi-eye', !isPassword);
+                toggleIcon.classList.toggle('bi-eye-slash', isPassword);
+            });
+        }
+    });
+</script>
 @endsection

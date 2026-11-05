@@ -1,16 +1,29 @@
 <!-- NAMA    : HARY RISTANTO
 KELAS   : TIF-5C
 NIM     : 3202416102 -->
-@foreach ([
-    'success' => 'success',
-    'error'   => 'danger',
-    'warning' => 'warning',
-    'info'    => 'info',
-] as $kunci => $kelas)
-    @if (session($kunci))
-        <div class="alert alert-{{ $kelas }} alert-dismissible fade show" role="alert">
-            {{ session($kunci) }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Tutup"></button>
-        </div>
-    @endif
-@endforeach
+<link rel="stylesheet" href="{{ asset('vendor/sweetalert2/css/sweetalert2.min.css') }}">
+<script src="{{ asset('vendor/sweetalert2/js/sweetalert2.all.min.js') }}"></script>
+
+<script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true
+    });
+
+    @foreach ([
+        'success' => 'success',
+        'error'   => 'error',
+        'warning' => 'warning',
+        'info'    => 'info',
+    ] as $kunci => $ikon)
+        @if (session($kunci))
+            Toast.fire({
+                icon: '{{ $ikon }}',
+                title: @json(session($kunci))
+            });
+        @endif
+    @endforeach
+</script>
