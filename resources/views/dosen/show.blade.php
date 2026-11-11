@@ -18,7 +18,6 @@ NIM     : 3202416102 -->
                 <dt class="col-sm-3">Nama</dt>
                 <dd class="col-sm-9">{{ $dosen->nama }}</dd>
 
-                {{-- TAMBAHAN UNTUK JABATAN FUNGSIONAL --}}
                 <dt class="col-sm-3">Jabatan Fungsional</dt>
                 <dd class="col-sm-9">{{ $dosen->jabatan_fungsional ?: '-' }}</dd>
 

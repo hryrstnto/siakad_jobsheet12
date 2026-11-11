@@ -47,4 +47,3 @@ NIM     : 3202416102 -->
         <div class="invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
-
